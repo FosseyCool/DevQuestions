@@ -1,3 +1,3 @@
 namespace DevQuestions.Contacts;
 
-public record CreateQuestionDto(string Title, string Body, Guid UserId, Guid[] TagsId);
+public record CreateQuestionDto(string Title, string Text, Guid UserId, Guid[] TagIds);

@@ -1,3 +1,4 @@
+using DevQuestions.Application.Questions;
 using DevQuestions.Contacts;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,10 +8,18 @@ namespace DevQuestions.Presenters;
 [Route("[controller]")]
 public class QuestionsController : ControllerBase
 {
+    private readonly IQuestionsService _questionService;
+
+    public QuestionsController(IQuestionsService questionService)
+    {
+        _questionService = questionService;
+    }
+
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] CreateQuestionDto request, CancellationToken cancellationToken)
     {
-        return Ok("Question created");
+        var questionId = await _questionService.Create(request, cancellationToken);
+        return Ok(questionId);
     }
 
     [HttpGet]
