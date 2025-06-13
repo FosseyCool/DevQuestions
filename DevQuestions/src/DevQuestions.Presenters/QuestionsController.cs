@@ -8,7 +8,7 @@ namespace DevQuestions.Presenters;
 [Route("[controller]")]
 public class QuestionsController : ControllerBase
 {
-    private readonly IQuestionsService _questionService;
+     private readonly IQuestionsService _questionService;
 
     public QuestionsController(IQuestionsService questionService)
     {
